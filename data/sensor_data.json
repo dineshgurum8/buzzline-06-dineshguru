@@ -1,0 +1,602 @@
+[
+    {
+        "timestamp": 1739919827,
+        "vibration": 1.62,
+        "temperature": 26.88,
+        "sound_level": 51.67
+    },
+    {
+        "timestamp": 1739919828,
+        "vibration": 3.07,
+        "temperature": 38.69,
+        "sound_level": 53.88
+    },
+    {
+        "timestamp": 1739919829,
+        "vibration": 9.43,
+        "temperature": 53.53,
+        "sound_level": 68.5
+    },
+    {
+        "timestamp": 1739919830,
+        "vibration": 3.77,
+        "temperature": 74.38,
+        "sound_level": 46.12
+    },
+    {
+        "timestamp": 1739919831,
+        "vibration": 8.27,
+        "temperature": 24.35,
+        "sound_level": 71.95
+    },
+    {
+        "timestamp": 1739919832,
+        "vibration": 4.59,
+        "temperature": 54.02,
+        "sound_level": 55.12
+    },
+    {
+        "timestamp": 1739919833,
+        "vibration": 6.87,
+        "temperature": 85.69,
+        "sound_level": 53.81
+    },
+    {
+        "timestamp": 1739919834,
+        "vibration": 9.54,
+        "temperature": 96.51,
+        "sound_level": 35.87
+    },
+    {
+        "timestamp": 1739919835,
+        "vibration": 1.12,
+        "temperature": 60.28,
+        "sound_level": 80.7
+    },
+    {
+        "timestamp": 1739919836,
+        "vibration": 7.86,
+        "temperature": 71.96,
+        "sound_level": 54.45
+    },
+    {
+        "timestamp": 1739919837,
+        "vibration": 8.69,
+        "temperature": 82.88,
+        "sound_level": 68.24
+    },
+    {
+        "timestamp": 1739919838,
+        "vibration": 2.3,
+        "temperature": 48.07,
+        "sound_level": 44.39
+    },
+    {
+        "timestamp": 1739919839,
+        "vibration": 5.63,
+        "temperature": 35.53,
+        "sound_level": 45.18
+    },
+    {
+        "timestamp": 1739919840,
+        "vibration": 6.29,
+        "temperature": 50.89,
+        "sound_level": 33.27
+    },
+    {
+        "timestamp": 1739919841,
+        "vibration": 2.52,
+        "temperature": 78.74,
+        "sound_level": 38.21
+    },
+    {
+        "timestamp": 1739919842,
+        "vibration": 8.47,
+        "temperature": 79.33,
+        "sound_level": 52.64
+    },
+    {
+        "timestamp": 1739919843,
+        "vibration": 3.78,
+        "temperature": 25.41,
+        "sound_level": 40.86
+    },
+    {
+        "timestamp": 1739919844,
+        "vibration": 6.73,
+        "temperature": 22.51,
+        "sound_level": 86.32
+    },
+    {
+        "timestamp": 1739919845,
+        "vibration": 8.02,
+        "temperature": 75.61,
+        "sound_level": 42.4
+    },
+    {
+        "timestamp": 1739919846,
+        "vibration": 1.23,
+        "temperature": 93.39,
+        "sound_level": 64.94
+    },
+    {
+        "timestamp": 1739919847,
+        "vibration": 2.6,
+        "temperature": 63.52,
+        "sound_level": 56.14
+    },
+    {
+        "timestamp": 1739919848,
+        "vibration": 0.74,
+        "temperature": 57.25,
+        "sound_level": 46.89
+    },
+    {
+        "timestamp": 1739919849,
+        "vibration": 6.72,
+        "temperature": 31.85,
+        "sound_level": 86.5
+    },
+    {
+        "timestamp": 1739919850,
+        "vibration": 1.15,
+        "temperature": 72.24,
+        "sound_level": 69.97
+    },
+    {
+        "timestamp": 1739919851,
+        "vibration": 3.75,
+        "temperature": 38.32,
+        "sound_level": 84.9
+    },
+    {
+        "timestamp": 1739919852,
+        "vibration": 4.95,
+        "temperature": 33.8,
+        "sound_level": 64.98
+    },
+    {
+        "timestamp": 1739919853,
+        "vibration": 2.6,
+        "temperature": 71.93,
+        "sound_level": 88.58
+    },
+    {
+        "timestamp": 1739919854,
+        "vibration": 5.17,
+        "temperature": 72.83,
+        "sound_level": 66.51
+    },
+    {
+        "timestamp": 1739919855,
+        "vibration": 5.82,
+        "temperature": 80.24,
+        "sound_level": 48.87
+    },
+    {
+        "timestamp": 1739919856,
+        "vibration": 8.36,
+        "temperature": 37.55,
+        "sound_level": 35.13
+    },
+    {
+        "timestamp": 1739919857,
+        "vibration": 0.86,
+        "temperature": 31.78,
+        "sound_level": 73.01
+    },
+    {
+        "timestamp": 1739919858,
+        "vibration": 0.56,
+        "temperature": 78.82,
+        "sound_level": 72.78
+    },
+    {
+        "timestamp": 1739919859,
+        "vibration": 3.19,
+        "temperature": 82.71,
+        "sound_level": 33.4
+    },
+    {
+        "timestamp": 1739919860,
+        "vibration": 7.52,
+        "temperature": 40.88,
+        "sound_level": 55.23
+    },
+    {
+        "timestamp": 1739919861,
+        "vibration": 5.85,
+        "temperature": 67.55,
+        "sound_level": 66.83
+    },
+    {
+        "timestamp": 1739919862,
+        "vibration": 3.14,
+        "temperature": 33.47,
+        "sound_level": 36.36
+    },
+    {
+        "timestamp": 1739919863,
+        "vibration": 5.21,
+        "temperature": 50.56,
+        "sound_level": 85.94
+    },
+    {
+        "timestamp": 1739919864,
+        "vibration": 7.82,
+        "temperature": 34.72,
+        "sound_level": 45.61
+    },
+    {
+        "timestamp": 1739919865,
+        "vibration": 5.19,
+        "temperature": 98.62,
+        "sound_level": 59.78
+    },
+    {
+        "timestamp": 1739919866,
+        "vibration": 6.52,
+        "temperature": 52.3,
+        "sound_level": 38.55
+    },
+    {
+        "timestamp": 1739919867,
+        "vibration": 8.66,
+        "temperature": 76.96,
+        "sound_level": 86.24
+    },
+    {
+        "timestamp": 1739919868,
+        "vibration": 8.87,
+        "temperature": 86.79,
+        "sound_level": 75.9
+    },
+    {
+        "timestamp": 1739919869,
+        "vibration": 4.78,
+        "temperature": 79.43,
+        "sound_level": 59.82
+    },
+    {
+        "timestamp": 1739919870,
+        "vibration": 2.9,
+        "temperature": 72.57,
+        "sound_level": 59.91
+    },
+    {
+        "timestamp": 1739919871,
+        "vibration": 1.66,
+        "temperature": 22.55,
+        "sound_level": 84.25
+    },
+    {
+        "timestamp": 1739919872,
+        "vibration": 9.99,
+        "temperature": 29.67,
+        "sound_level": 37.6
+    },
+    {
+        "timestamp": 1739919873,
+        "vibration": 2.34,
+        "temperature": 63.44,
+        "sound_level": 72.36
+    },
+    {
+        "timestamp": 1739919874,
+        "vibration": 5.45,
+        "temperature": 68.07,
+        "sound_level": 76.74
+    },
+    {
+        "timestamp": 1739919875,
+        "vibration": 6.7,
+        "temperature": 84.75,
+        "sound_level": 84.47
+    },
+    {
+        "timestamp": 1739919876,
+        "vibration": 7.25,
+        "temperature": 40.34,
+        "sound_level": 59.42
+    },
+    {
+        "timestamp": 1739919877,
+        "vibration": 6.81,
+        "temperature": 31.71,
+        "sound_level": 31.27
+    },
+    {
+        "timestamp": 1739919878,
+        "vibration": 4.27,
+        "temperature": 71.88,
+        "sound_level": 52.76
+    },
+    {
+        "timestamp": 1739919879,
+        "vibration": 9.9,
+        "temperature": 79.15,
+        "sound_level": 47.52
+    },
+    {
+        "timestamp": 1739919880,
+        "vibration": 4.22,
+        "temperature": 34.41,
+        "sound_level": 61.19
+    },
+    {
+        "timestamp": 1739919881,
+        "vibration": 4.24,
+        "temperature": 90.09,
+        "sound_level": 59.07
+    },
+    {
+        "timestamp": 1739919882,
+        "vibration": 0.56,
+        "temperature": 69.82,
+        "sound_level": 83.78
+    },
+    {
+        "timestamp": 1739919883,
+        "vibration": 2.6,
+        "temperature": 98.45,
+        "sound_level": 59.38
+    },
+    {
+        "timestamp": 1739919884,
+        "vibration": 0.93,
+        "temperature": 40.19,
+        "sound_level": 74.05
+    },
+    {
+        "timestamp": 1739919885,
+        "vibration": 7.21,
+        "temperature": 64.7,
+        "sound_level": 30.8
+    },
+    {
+        "timestamp": 1739919886,
+        "vibration": 8.14,
+        "temperature": 97.48,
+        "sound_level": 70.5
+    },
+    {
+        "timestamp": 1739919887,
+        "vibration": 8.43,
+        "temperature": 58.07,
+        "sound_level": 64.55
+    },
+    {
+        "timestamp": 1739919888,
+        "vibration": 5.05,
+        "temperature": 29.59,
+        "sound_level": 75.77
+    },
+    {
+        "timestamp": 1739919889,
+        "vibration": 4.57,
+        "temperature": 51.52,
+        "sound_level": 79.65
+    },
+    {
+        "timestamp": 1739919890,
+        "vibration": 3.27,
+        "temperature": 45.8,
+        "sound_level": 85.8
+    },
+    {
+        "timestamp": 1739919891,
+        "vibration": 1.8,
+        "temperature": 24.27,
+        "sound_level": 71.9
+    },
+    {
+        "timestamp": 1739919892,
+        "vibration": 3.94,
+        "temperature": 77.63,
+        "sound_level": 56.36
+    },
+    {
+        "timestamp": 1739919893,
+        "vibration": 8.76,
+        "temperature": 98.85,
+        "sound_level": 56.71
+    },
+    {
+        "timestamp": 1739919894,
+        "vibration": 7.4,
+        "temperature": 45.22,
+        "sound_level": 32.17
+    },
+    {
+        "timestamp": 1739919895,
+        "vibration": 6.2,
+        "temperature": 86.56,
+        "sound_level": 31.04
+    },
+    {
+        "timestamp": 1739919896,
+        "vibration": 6.76,
+        "temperature": 58.93,
+        "sound_level": 39.97
+    },
+    {
+        "timestamp": 1739919897,
+        "vibration": 1.47,
+        "temperature": 21.04,
+        "sound_level": 67.32
+    },
+    {
+        "timestamp": 1739919898,
+        "vibration": 2.59,
+        "temperature": 58.64,
+        "sound_level": 47.39
+    },
+    {
+        "timestamp": 1739919899,
+        "vibration": 6.34,
+        "temperature": 60.05,
+        "sound_level": 36.59
+    },
+    {
+        "timestamp": 1739919900,
+        "vibration": 5.66,
+        "temperature": 98.33,
+        "sound_level": 86.92
+    },
+    {
+        "timestamp": 1739919901,
+        "vibration": 2.75,
+        "temperature": 98.3,
+        "sound_level": 85.3
+    },
+    {
+        "timestamp": 1739919902,
+        "vibration": 8.54,
+        "temperature": 33.49,
+        "sound_level": 79.65
+    },
+    {
+        "timestamp": 1739919903,
+        "vibration": 7.37,
+        "temperature": 95.75,
+        "sound_level": 51.03
+    },
+    {
+        "timestamp": 1739919904,
+        "vibration": 4.66,
+        "temperature": 91.71,
+        "sound_level": 32.4
+    },
+    {
+        "timestamp": 1739919905,
+        "vibration": 6.7,
+        "temperature": 79.81,
+        "sound_level": 44.74
+    },
+    {
+        "timestamp": 1739919906,
+        "vibration": 2.57,
+        "temperature": 86.12,
+        "sound_level": 69.86
+    },
+    {
+        "timestamp": 1739919907,
+        "vibration": 3.46,
+        "temperature": 46.1,
+        "sound_level": 69.85
+    },
+    {
+        "timestamp": 1739919908,
+        "vibration": 7.76,
+        "temperature": 86.11,
+        "sound_level": 34.93
+    },
+    {
+        "timestamp": 1739919909,
+        "vibration": 6.5,
+        "temperature": 79.11,
+        "sound_level": 64.48
+    },
+    {
+        "timestamp": 1739919910,
+        "vibration": 5.51,
+        "temperature": 48.02,
+        "sound_level": 88.41
+    },
+    {
+        "timestamp": 1739919911,
+        "vibration": 6.4,
+        "temperature": 32.46,
+        "sound_level": 80.29
+    },
+    {
+        "timestamp": 1739919912,
+        "vibration": 2.65,
+        "temperature": 69.4,
+        "sound_level": 53.44
+    },
+    {
+        "timestamp": 1739919913,
+        "vibration": 8.38,
+        "temperature": 92.42,
+        "sound_level": 42.4
+    },
+    {
+        "timestamp": 1739919914,
+        "vibration": 2.28,
+        "temperature": 34.69,
+        "sound_level": 32.51
+    },
+    {
+        "timestamp": 1739919915,
+        "vibration": 1.43,
+        "temperature": 88.23,
+        "sound_level": 79.17
+    },
+    {
+        "timestamp": 1739919916,
+        "vibration": 1.19,
+        "temperature": 64.65,
+        "sound_level": 74.96
+    },
+    {
+        "timestamp": 1739919917,
+        "vibration": 5.22,
+        "temperature": 48.56,
+        "sound_level": 38.51
+    },
+    {
+        "timestamp": 1739919918,
+        "vibration": 5.08,
+        "temperature": 83.27,
+        "sound_level": 79.75
+    },
+    {
+        "timestamp": 1739919919,
+        "vibration": 4.08,
+        "temperature": 99.11,
+        "sound_level": 82.19
+    },
+    {
+        "timestamp": 1739919920,
+        "vibration": 0.7,
+        "temperature": 47.89,
+        "sound_level": 83.86
+    },
+    {
+        "timestamp": 1739919921,
+        "vibration": 7.07,
+        "temperature": 27.28,
+        "sound_level": 78.66
+    },
+    {
+        "timestamp": 1739919922,
+        "vibration": 5.62,
+        "temperature": 73.13,
+        "sound_level": 70.41
+    },
+    {
+        "timestamp": 1739919923,
+        "vibration": 9.01,
+        "temperature": 75.55,
+        "sound_level": 44.51
+    },
+    {
+        "timestamp": 1739919924,
+        "vibration": 7.24,
+        "temperature": 56.31,
+        "sound_level": 66.97
+    },
+    {
+        "timestamp": 1739919925,
+        "vibration": 5.86,
+        "temperature": 98.89,
+        "sound_level": 42.26
+    },
+    {
+        "timestamp": 1739919926,
+        "vibration": 5.3,
+        "temperature": 68.41,
+        "sound_level": 47.2
+    }
+]
