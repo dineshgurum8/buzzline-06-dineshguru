@@ -53,26 +53,6 @@
 # py -m pip install --upgrade pip setuptools wheel
 # py -m pip install --upgrade -r requirements.txt
 
-### Mac/Linux Command (don't include the #):
-# python3 -m pip install --upgrade pip setuptools wheel
-# python3 -m pip install --upgrade -r requirements.txt
-
-# When you identify a new package you want to use, 
-# Just update the list below and re-run the install command. 
-
-# ======================================================
-# VS CODE: Select Interpreter
-# ======================================================
-# VS Code needs our populated .venv to interpret our files correctly.
-# To set the VS Code Interpreter:
-# 1. Open the Command Palette: Press Ctrl+Shift+P (Windows/Linux) or Cmd+Shift+P (Mac).
-# 2. Search for "Python: Select Interpreter":
-# 3. Type Python: Select Interpreter in the Command Palette search bar and select it from the dropdown.
-# 4. Choose an Interpreter - A list of available Python environments will appear.
-#    Look for the local .venv option.
-# 5. Once selected, check the Python version displayed 
-#    in the bottom-left corner of the VS Code window in the status bar.
-
 # ======================================================
 # ESSENTIAL TOOLS
 # ======================================================
@@ -114,3 +94,5 @@ kafka-python-ng
 # PyMySQL - MySQL client library
 # Uncomment the line below to install PyMySQL.
 # PyMySQL
+twilio
+jsonschema
