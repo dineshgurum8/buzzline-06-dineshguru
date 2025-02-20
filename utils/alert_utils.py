@@ -1,25 +1,28 @@
-import os
 from twilio.rest import Client
-from dotenv import load_dotenv
-
-# Load environment variables from .env
-load_dotenv()
-
-# Twilio Credentials
-TWILIO_ACCOUNT_SID = os.getenv("TWILIO_ACCOUNT_SID")
-TWILIO_AUTH_TOKEN = os.getenv("TWILIO_AUTH_TOKEN")
-TWILIO_PHONE_NUMBER = os.getenv("TWILIO_PHONE_NUMBER")
-ALERT_PHONE_NUMBER = os.getenv("ALERT_PHONE_NUMBER")
+import os
 
 def send_sms_alert(message):
-    """Send an SMS alert using Twilio."""
     try:
-        client = Client(TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN)
-        sms = client.messages.create(
+        # Load environment variables
+        account_sid = os.getenv("TWILIO_ACCOUNT_SID")
+        auth_token = os.getenv("TWILIO_AUTH_TOKEN")
+        twilio_phone_number = os.getenv("TWILIO_PHONE_NUMBER")
+        to_phone_number = os.getenv("TO_PHONE_NUMBER")
+
+        # Print credentials for debugging (Do not share this in production!)
+        print("Twilio Account SID:", account_sid)
+        print("Twilio Auth Token:", auth_token)
+        print("Twilio Phone Number:", twilio_phone_number)
+
+        # Twilio Client
+        client = Client(account_sid, auth_token)
+
+        # Send SMS
+        client.messages.create(
             body=message,
-            from_=TWILIO_PHONE_NUMBER,
-            to=ALERT_PHONE_NUMBER
+            from_=twilio_phone_number,
+            to=to_phone_number
         )
-        print(f"📩 SMS Sent: {sms.sid}")
+        print("📩 SMS Sent!")
     except Exception as e:
         print(f"⚠ Error sending SMS: {e}")

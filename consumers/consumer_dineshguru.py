@@ -1,15 +1,19 @@
 import json
 import os
-import time
 from collections import deque
 from kafka import KafkaConsumer
 import matplotlib.pyplot as plt
 import matplotlib.animation as animation
 from dotenv import load_dotenv
 from utils.alert_utils import send_sms_alert
+import time
 
 # Load environment variables
 load_dotenv()
+
+print("Twilio Account SID:", os.getenv("TWILIO_ACCOUNT_SID"))
+print("Twilio Auth Token:", os.getenv("TWILIO_AUTH_TOKEN"))
+print("Twilio Phone Number:", os.getenv("TWILIO_PHONE_NUMBER"))
 
 # Kafka Configuration
 KAFKA_BROKER = os.getenv("KAFKA_BROKER", "localhost:9092")
@@ -52,32 +56,60 @@ def check_anomalies(sensor_data):
 def process_message(message):
     """Process and store received sensor data."""
     sensor_data = message.value
+    print(f"Received data: {sensor_data}")  # Debug print to check data
     timestamps.append(sensor_data["timestamp"])
     vibrations.append(sensor_data["vibration"])
     temperatures.append(sensor_data["temperature"])
     sound_levels.append(sensor_data["sound_level"])
 
+    # Debug print for temperature data
+    print(f"Current temperatures: {temperatures}")
+    
     check_anomalies(sensor_data)
 
-def update_plot(frame, ax1, ax2, ax3):
-    """Update the Matplotlib live plot with new data."""
-    ax1.clear()
-    ax2.clear()
-    ax3.clear()
+def create_nested_pie_chart():
+    """Create a nested pie chart for temperature changes."""
+    # Wait for temperature data to be available
+    while not temperatures:
+        print("Waiting for temperature data...")
+        time.sleep(1)  # Wait for 1 second before checking again
 
-    ax1.plot(timestamps, vibrations, "b-", label="Vibration (mm/s)")
-    ax2.plot(timestamps, temperatures, "r-", label="Temperature (°C)")
-    ax3.plot(timestamps, sound_levels, "g-", label="Sound Level (dB)")
+    temp = temperatures[-1]
 
-    # Set titles and labels
-    ax1.set_title("Vibration Over Time")
-    ax2.set_title("Temperature Over Time")
-    ax3.set_title("Sound Level Over Time")
+    # Handle cases where the temperature is NaN or invalid
+    if temp is None or temp != temp:  # Check if temp is NaN
+        print("Invalid temperature data.")
+        return
 
-    for ax in [ax1, ax2, ax3]:
-        ax.set_xlabel("Time")
-        ax.legend()
-        ax.grid()
+    # Define categories based on temperature range
+    low_temp = temp if temp <= 20 else 0
+    medium_temp = temp if 20 < temp <= 50 else 0
+    high_temp = temp if temp > 50 else 0
+
+    # If all categories are 0, avoid plotting
+    if not any([low_temp, medium_temp, high_temp]):
+        print("Temperature data does not fall into any defined range.")
+        return
+
+    # Create the nested pie chart (2 layers)
+    fig, ax = plt.subplots(figsize=(7, 7))
+
+    # Pie chart for low, medium, and high temperature
+    outer_labels = ['Low', 'Medium', 'High']
+    outer_sizes = [low_temp, medium_temp, high_temp]
+    outer_colors = ['#ff9999', '#66b3ff', '#99ff99']
+
+    # Inner pie chart for temperature values
+    inner_labels = [f"Temp: {temp}°C"]
+    inner_sizes = [temp]
+    inner_colors = ['#ffcc99']
+
+    ax.pie(outer_sizes, labels=outer_labels, colors=outer_colors, autopct='%1.1f%%', startangle=90, radius=1.0, wedgeprops=dict(width=0.3))
+    ax.pie(inner_sizes, labels=inner_labels, colors=inner_colors, autopct='%1.1f%%', startangle=90, radius=0.7)
+
+    # Display the chart
+    ax.set_title("Nested Pie Chart for Temperature Changes", fontsize=16)
+    plt.show()
 
 def consume_sensor_data():
     """Continuously consume sensor data from Kafka."""
@@ -97,7 +129,5 @@ if __name__ == "__main__":
     consumer_thread = threading.Thread(target=consume_sensor_data, daemon=True)
     consumer_thread.start()
 
-    # Set up live visualization
-    fig, (ax1, ax2, ax3) = plt.subplots(3, 1, figsize=(10, 8))
-    ani = animation.FuncAnimation(fig, update_plot, fargs=(ax1, ax2, ax3), interval=1000)
-    plt.show()
+    # Display the nested pie chart after data consumption
+    create_nested_pie_chart()
