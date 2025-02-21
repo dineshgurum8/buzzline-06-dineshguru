@@ -1,12 +1,14 @@
 import json
 import os
+import time
 from collections import deque
 from kafka import KafkaConsumer
 import matplotlib.pyplot as plt
 import matplotlib.animation as animation
+from matplotlib import cm
 from dotenv import load_dotenv
 from utils.alert_utils import send_sms_alert
-import time
+import numpy as np
 
 # Load environment variables
 load_dotenv()
@@ -56,61 +58,85 @@ def check_anomalies(sensor_data):
 def process_message(message):
     """Process and store received sensor data."""
     sensor_data = message.value
-    print(f"Received data: {sensor_data}")  # Debug print to check data
     timestamps.append(sensor_data["timestamp"])
     vibrations.append(sensor_data["vibration"])
     temperatures.append(sensor_data["temperature"])
     sound_levels.append(sensor_data["sound_level"])
 
-    # Debug print for temperature data
-    print(f"Current temperatures: {temperatures}")
-    
     check_anomalies(sensor_data)
 
-def create_nested_pie_chart():
-    """Create a nested pie chart for temperature changes."""
-    # Wait for temperature data to be available
-    while not temperatures:
-        print("Waiting for temperature data...")
-        time.sleep(1)  # Wait for 1 second before checking again
+def update_plot(frame, ax1, ax2, ax3):
+    """Update the Matplotlib live plot with new data."""
+    ax1.clear()
+    ax2.clear()
+    ax3.clear()
 
-    temp = temperatures[-1]
+    ax1.plot(timestamps, vibrations, "b-", label="Vibration (mm/s)")
+    ax2.plot(timestamps, temperatures, "r-", label="Temperature (°C)")
+    ax3.plot(timestamps, sound_levels, "g-", label="Sound Level (dB)")
 
-    # Handle cases where the temperature is NaN or invalid
-    if temp is None or temp != temp:  # Check if temp is NaN
-        print("Invalid temperature data.")
-        return
+    # Set titles and labels for line plots
+    ax1.set_title("Vibration Over Time")
+    ax2.set_title("Temperature Over Time")
+    ax3.set_title("Sound Level Over Time")
 
-    # Define categories based on temperature range
-    low_temp = temp if temp <= 20 else 0
-    medium_temp = temp if 20 < temp <= 50 else 0
-    high_temp = temp if temp > 50 else 0
+    for ax in [ax1, ax2, ax3]:
+        ax.set_xlabel("Time")
+        ax.legend()
+        ax.grid()
 
-    # If all categories are 0, avoid plotting
-    if not any([low_temp, medium_temp, high_temp]):
-        print("Temperature data does not fall into any defined range.")
-        return
+def temperature_dial_plot():
+    """Plot a single Temperature Dial Gauge showing Low, Medium, and High ranges."""
+    temp = temperatures[-1] if temperatures else 0  # Get the latest temperature
 
-    # Create the nested pie chart (2 layers)
-    fig, ax = plt.subplots(figsize=(7, 7))
+    # Define temperature ranges
+    low_range = (0, 60)
+    medium_range = (60, 120)
+    high_range = (120, 180)
 
-    # Pie chart for low, medium, and high temperature
-    outer_labels = ['Low', 'Medium', 'High']
-    outer_sizes = [low_temp, medium_temp, high_temp]
-    outer_colors = ['#ff9999', '#66b3ff', '#99ff99']
+    # Create a single polar plot
+    fig, ax = plt.subplots(figsize=(25, 25), subplot_kw={'projection': 'polar'})
 
-    # Inner pie chart for temperature values
-    inner_labels = [f"Temp: {temp}°C"]
-    inner_sizes = [temp]
-    inner_colors = ['#ffcc99']
+    # Set up the polar plot
+    ax.set_theta_zero_location('N')  # 0 degrees at the top
+    ax.set_theta_direction(-1)  # Clockwise direction
+    ax.set_theta_offset(np.pi)
+    ax.set_ylim(0, 1)  # Radial limits
 
-    ax.pie(outer_sizes, labels=outer_labels, colors=outer_colors, autopct='%1.1f%%', startangle=90, radius=1.0, wedgeprops=dict(width=0.3))
-    ax.pie(inner_sizes, labels=inner_labels, colors=inner_colors, autopct='%1.1f%%', startangle=90, radius=0.7)
+    # Draw the gauge background
+    theta = np.linspace(0, np.pi, 100)
+    r = np.ones_like(theta) * 0.5
+    ax.plot(theta, r, color='gray', lw=3, alpha=0.4)
 
-    # Display the chart
-    ax.set_title("Nested Pie Chart for Temperature Changes", fontsize=16)
+    # Draw the colored ranges for Low, Medium, and High temperatures
+    low_theta = np.linspace(0, np.pi * (low_range[1] / 180), 100)
+    medium_theta = np.linspace(np.pi * (medium_range[0] / 180), np.pi * (medium_range[1] / 180), 100)
+    high_theta = np.linspace(np.pi * (high_range[0] / 180), np.pi * (high_range[1] / 180), 100)
+
+    ax.fill_between(low_theta, 0, 0.5, color='green', alpha=0.5, label='Low Temp (0-60°C)')
+    ax.fill_between(medium_theta, 0, 0.5, color='orange', alpha=0.5, label='Medium Temp (60-120°C)')
+    ax.fill_between(high_theta, 0, 0.5, color='red', alpha=0.5, label='High Temp (120-180°C)')
+
+    # Draw the pointer for the current temperature
+    temp_angle = (temp / 180) * np.pi  # Convert temperature to angle
+    ax.plot([temp_angle, temp_angle], [0, 0.5], color='black', lw=2, label=f'Current Temp: {temp}°C')
+
+    # Add a label in the center of the dial
+    ax.text(0, 0.3, f"{temp}°C", horizontalalignment='center', verticalalignment='center', fontsize=16, fontweight='bold')
+
+    # Add a legend
+    ax.legend(loc='center left', bbox_to_anchor=(1.1, 1.1))
+
+    # Hide radial ticks
+    ax.set_rticks([])
+
+    # Set title
+    ax.set_title("Condition Monitoring -Temperature Gauge", fontsize=16, pad=20)
+    ax.set_axis_off()
+
+    plt.tight_layout()
     plt.show()
-
+    
 def consume_sensor_data():
     """Continuously consume sensor data from Kafka."""
     try:
@@ -129,5 +155,16 @@ if __name__ == "__main__":
     consumer_thread = threading.Thread(target=consume_sensor_data, daemon=True)
     consumer_thread.start()
 
-    # Display the nested pie chart after data consumption
-    create_nested_pie_chart()
+    # Set up live visualization with a corrected layout for line plots
+    fig, axs = plt.subplots(1, 3, figsize=(15, 5))
+
+    # Assign the axes to the plots
+    ax1, ax2, ax3 = axs[0], axs[1], axs[2]  # Assigning axes to each plot
+
+    ani = animation.FuncAnimation(fig, update_plot, fargs=(ax1, ax2, ax3), interval=1000)
+
+    plt.tight_layout()
+    plt.show()
+
+    # Show the separate temperature dial plot
+    temperature_dial_plot()

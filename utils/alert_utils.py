@@ -7,7 +7,7 @@ def send_sms_alert(message):
         account_sid = os.getenv("TWILIO_ACCOUNT_SID")
         auth_token = os.getenv("TWILIO_AUTH_TOKEN")
         twilio_phone_number = os.getenv("TWILIO_PHONE_NUMBER")
-        to_phone_number = os.getenv("TO_PHONE_NUMBER")
+        to_phone_number = os.getenv("ALERT_PHONE_NUMBER")
 
         # Print credentials for debugging (Do not share this in production!)
         print("Twilio Account SID:", account_sid)
