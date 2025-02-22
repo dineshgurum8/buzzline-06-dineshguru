@@ -72,7 +72,7 @@ python consumer/consumer.py # Live sensor readings will be plotted in real-time.
 # Run Consumer with Alerts
 python consumer/consumer_with_alerts.py   # SMS alerts will be sent if thresholds are exceeded. 
 
-📊 Visualizations
+# 📊 Visualizations
 X-axis → Time (real-time timestamps)
 Y-axis → Sensor values (Vibration, Temperature, Sound Level)
 Line Colors:
@@ -88,7 +88,7 @@ Auto-scrolling x-axis for a smooth live stream effect
 ![Linechart](Images/Plot1.png)
 ![Scatterplot](Images/Scatterplot.png)
 
-📩 SMS Alerts Setup (Twilio)
+# 📩 SMS Alerts Setup (Twilio)
 1️⃣ Sign up at Twilio
 2️⃣ Get Account SID, Auth Token, Twilio Number
 3️⃣ Add credentials to consumer_with_alerts.py
@@ -106,7 +106,7 @@ pip install twilio
 ✅ Twilio SMS alerts for anomaly detection
 ✅ Scalable & adaptable for real-world applications
 
-📬 Future Enhancements
+# 📬 Future Enhancements
 🔹 Email alerts for critical failures
 🔹 Multiple Kafka topics for different sensors
 🔹 Store processed data in a database (PostgreSQL, MongoDB)
