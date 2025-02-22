@@ -81,6 +81,13 @@ Line Colors:
 🟢 Sound Level (dB)
 Auto-scrolling x-axis for a smooth live stream effect
 
+![Bar_chart](Images/Bar_chart.png)
+![Gaugeplot](Images/Gaugeplot.png)
+![Heatmap](Images/Heatmap.png)
+![Outliers](Images/Outliers.png)
+![Linechart](Images/Plot1.png)
+![Scatterplot](Images/Scatterplot.png)
+
 📩 SMS Alerts Setup (Twilio)
 1️⃣ Sign up at Twilio
 2️⃣ Get Account SID, Auth Token, Twilio Number

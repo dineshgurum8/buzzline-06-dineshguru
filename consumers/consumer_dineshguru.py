@@ -136,7 +136,111 @@ def temperature_dial_plot():
 
     plt.tight_layout()
     plt.show()
+
+def plot_boxplots():
+    """Generate box plots to identify outliers in sensor readings."""
+    fig, axs = plt.subplots(1, 3, figsize=(15, 5))
+
+    axs[0].boxplot(vibrations)
+    axs[0].set_title("Vibration Outliers")
+    axs[0].set_ylabel("Vibration (mm/s)")
+
+    axs[1].boxplot(temperatures)
+    axs[1].set_title("Temperature Outliers")
+    axs[1].set_ylabel("Temperature (°C)")
+
+    axs[2].boxplot(sound_levels)
+    axs[2].set_title("Sound Level Outliers")
+    axs[2].set_ylabel("Sound Level (dB)")
+
+    plt.tight_layout()
+    plt.show()
+ ###############################
+def plot_histograms():
+    """Plot histograms for vibration, temperature, and sound levels."""
+    fig, axs = plt.subplots(1, 3, figsize=(15, 5))
+
+    axs[0].hist(vibrations, bins=20, color='b', alpha=0.7)
+    axs[0].set_title("Vibration Distribution")
+    axs[0].set_xlabel("Vibration (mm/s)")
+    axs[0].set_ylabel("Frequency")
+
+    axs[1].hist(temperatures, bins=20, color='r', alpha=0.7)
+    axs[1].set_title("Temperature Distribution")
+    axs[1].set_xlabel("Temperature (°C)")
+    axs[1].set_ylabel("Frequency")
+
+    axs[2].hist(sound_levels, bins=20, color='g', alpha=0.7)
+    axs[2].set_title("Sound Level Distribution")
+    axs[2].set_xlabel("Sound Level (dB)")
+    axs[2].set_ylabel("Frequency")
+
+    plt.tight_layout()
+    plt.show()
+
+##########################################################  
+import seaborn as sns
+import pandas as pd
+
+def plot_correlation_heatmap():
+    """Plot a heatmap to show correlation between different sensor data."""
+    if len(timestamps) < 10:  # Ensure we have enough data
+        return
     
+    df = pd.DataFrame({
+        "Vibration": list(vibrations),
+        "Temperature": list(temperatures),
+        "Sound Level": list(sound_levels),
+    })
+
+    fig, ax = plt.subplots(figsize=(6, 4))
+    sns.heatmap(df.corr(), annot=True, cmap="coolwarm", ax=ax)
+    plt.title("Sensor Data Correlation Heatmap")
+    plt.show()
+##########
+def plot_boxplots():
+    """Generate box plots to identify outliers in sensor readings."""
+    fig, axs = plt.subplots(1, 3, figsize=(15, 5))
+
+    axs[0].boxplot(vibrations)
+    axs[0].set_title("Vibration Outliers")
+    axs[0].set_ylabel("Vibration (mm/s)")
+
+    axs[1].boxplot(temperatures)
+    axs[1].set_title("Temperature Outliers")
+    axs[1].set_ylabel("Temperature (°C)")
+
+    axs[2].boxplot(sound_levels)
+    axs[2].set_title("Sound Level Outliers")
+    axs[2].set_ylabel("Sound Level (dB)")
+
+    plt.tight_layout()
+    plt.show()
+###############
+def plot_anomaly_scatter():
+    """Scatter plot to highlight anomalies in real-time data."""
+    fig, axs = plt.subplots(1, 3, figsize=(15, 5))
+
+    # Define colors: red for anomalies, blue for normal
+    vib_colors = ["red" if v > VIBRATION_THRESHOLD else "blue" for v in vibrations]
+    temp_colors = ["red" if t > TEMPERATURE_THRESHOLD else "blue" for t in temperatures]
+    sound_colors = ["red" if s > SOUND_LEVEL_THRESHOLD else "blue" for s in sound_levels]
+
+    axs[0].scatter(timestamps, vibrations, c=vib_colors)
+    axs[0].set_title("Vibration Anomalies")
+    axs[0].set_ylabel("Vibration (mm/s)")
+
+    axs[1].scatter(timestamps, temperatures, c=temp_colors)
+    axs[1].set_title("Temperature Anomalies")
+    axs[1].set_ylabel("Temperature (°C)")
+
+    axs[2].scatter(timestamps, sound_levels, c=sound_colors)
+    axs[2].set_title("Sound Level Anomalies")
+    axs[2].set_ylabel("Sound Level (dB)")
+
+    plt.tight_layout()
+    plt.show()
+##########
 def consume_sensor_data():
     """Continuously consume sensor data from Kafka."""
     try:
@@ -167,4 +271,8 @@ if __name__ == "__main__":
     plt.show()
 
     # Show the separate temperature dial plot
+    plot_histograms()
+    plot_correlation_heatmap()
+    plot_boxplots()
+    plot_anomaly_scatter()
     temperature_dial_plot()
